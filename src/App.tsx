@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState } from "react";
 import {
   ChevronDown,
   ExternalLink,
@@ -18,7 +18,7 @@ const App = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   // Smooth scrolling for navigation
-  const scrollToSection = (id) => {
+  const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
@@ -160,11 +160,6 @@ const App = () => {
               src={witch} // Updated to use the uploaded image
               alt="Burn the Witch Background"
               className="w-full h-full object-cover"
-              onError={(e) => {
-                e.target.onerror = null;
-                e.target.src =
-                  "https://placehold.co/1920x1080/000000/FFFFFF?text=Background+Error";
-              }}
             />
           </div>
           <div className="relative z-10 p-6 mt-96 max-w-4xl mx-auto bg-gray-800 bg-opacity-70 rounded-3xl shadow-2xl border border-orange-600 animate-fade-in">
@@ -406,7 +401,7 @@ const App = () => {
         >
           <div className="max-w-4xl mx-auto">
             <h3 className="text-4xl font-extrabold text-orange-400 mb-12 flex items-center justify-center">
-              <Map className="w-10 h-10 mr-5" /> Roadmap test
+              <Map className="w-10 h-10 mr-5" /> Roadmap
             </h3>
             <div className="relative">
               {/* Vertical line for roadmap */}
@@ -650,7 +645,13 @@ const App = () => {
 };
 
 // FAQ Item Component
-const FAQItem = ({ question, answer }) => {
+const FAQItem = ({
+  question,
+  answer,
+}: {
+  question: string;
+  answer: string;
+}) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
